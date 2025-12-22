@@ -1,0 +1,54 @@
+{
+    "env": {
+        "browser": true,
+        "es2022": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2022,
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-unused-vars": "warn",
+        "no-console": "off",
+        "semi": [
+            "warn",
+            "always"
+        ],
+        "quotes": [
+            "warn",
+            "single",
+            {
+                "allowTemplateLiterals": true
+            }
+        ],
+        "indent": [
+            "warn",
+            4
+        ],
+        "no-multiple-empty-lines": [
+            "warn",
+            {
+                "max": 2
+            }
+        ],
+        "eqeqeq": [
+            "warn",
+            "always"
+        ],
+        "curly": [
+            "warn",
+            "multi-line"
+        ],
+        "prefer-const": "warn",
+        "no-var": "error",
+        "arrow-spacing": "warn",
+        "comma-dangle": [
+            "warn",
+            "never"
+        ],
+        "no-trailing-spaces": "warn"
+    },
+    "globals": {
+        "indexedDB": "readonly"
+    }
+}
