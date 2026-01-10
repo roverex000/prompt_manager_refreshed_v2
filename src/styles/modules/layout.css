@@ -1,0 +1,48 @@
+/* Layout */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    /* Top/Bottom layout */
+    height: 100vh;
+    background: var(--bg-body);
+}
+
+/* Tablet: Stack layout vertically with flexible heights */
+@media screen and (max-width: 1024px) {
+    .app-container {
+        flex-direction: column;
+    }
+}
+
+/* Mobile: Single column, compact layout */
+@media screen and (max-width: 768px) {
+    body {
+        height: auto;
+        overflow: auto;
+    }
+
+    .app-container {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .main-content {
+        min-height: auto;
+    }
+}
+
+/* Print styles */
+@media print {
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        width: 100%;
+        height: auto;
+    }
+
+    .header-actions {
+        display: none;
+    }
+}

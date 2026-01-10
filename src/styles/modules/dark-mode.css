@@ -1,0 +1,75 @@
+/* --- DARK MODE: Deep Ocean Zen --- */
+body.dark-mode {
+    --bg-body: #1A1F24;
+    /* Deep Slate/Ocean */
+    --bg-surface: #242A30;
+    /* Lighter Slate */
+    --bg-glass: rgba(36, 42, 48, 0.85);
+
+    --border-subtle: #343B42;
+    --border-hover: #48515B;
+
+    --text-primary: #EDEFEB;
+    /* Off-white */
+    --text-secondary: #A0AAB5;
+    /* Blue-grey */
+    --text-tertiary: #697480;
+
+    --primary: #68B0A8;
+    /* Bright Seafoam */
+    --primary-hover: #81C7BF;
+    --primary-light: #2A3638;
+
+    --accent: #FF9EBC;
+    /* Pastel Pink */
+
+    --danger: #F28482;
+    /* Soft Salmon */
+    --danger-bg: #3F2C2C;
+
+    --shadow-subtle: 0 2px 8px -2px rgba(0, 0, 0, 0.3);
+    --shadow-card: 0 8px 24px -6px rgba(0, 0, 0, 0.4);
+    --shadow-premium: 0 20px 48px -12px rgba(0, 0, 0, 0.5);
+    --shadow-pop: 0 12px 32px -8px rgba(104, 176, 168, 0.2);
+}
+
+/* Specific Dark Mode Tweaks */
+body.dark-mode textarea.code-font {
+    background: #020617;
+    /* Slate 950 */
+    color: #e2e8f0;
+}
+
+body.dark-mode .version-table th {
+    background: #0f172a;
+    border-bottom-color: #334155;
+}
+
+body.dark-mode .tag-pill {
+    background: #334155;
+    border-color: #475569;
+    color: #e2e8f0;
+}
+
+body.dark-mode .tag-pill:nth-child(3n+1) {
+    background: #064e3b;
+    color: #6ee7b7;
+    border-color: #059669;
+}
+
+body.dark-mode .tag-pill:nth-child(3n+2) {
+    background: #1e3a8a;
+    color: #93c5fd;
+    border-color: #2563eb;
+}
+
+body.dark-mode .tag-pill:nth-child(3n+3) {
+    background: #701a75;
+    color: #f0abfc;
+    border-color: #c026d3;
+}
+
+body.dark-mode .dirty-indicator.unsaved {
+    background: #451a03;
+    color: #fbbf24;
+}

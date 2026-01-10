@@ -1,0 +1,27 @@
+# Dependencies - these are generated from package.json
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# IDE/Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables (if you ever add them)
+.env
+.env.local
+
+# Test coverage
+coverage/

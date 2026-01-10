@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+/* --- THE DIGITAL ATELIER PALETTE --- */
+:root {
+    /* Backgrounds: Warm & tactile */
+    --bg-body: #F9F8F6;
+    /* "Warm Rice Paper" */
+    --bg-surface: #FFFFFF;
+    /* Pure white paper */
+    --bg-glass: rgba(253, 251, 247, 0.85);
+    /* Frosted warm glass */
+
+    /* Ui Borders & Shadows */
+    --border-subtle: #E8E6E1;
+    /* Soft organic border */
+    --border-hover: #D1D5DB;
+
+    /* Text: Soft Ink */
+    --text-primary: #2C3333;
+    /* Soft Charcoal (not pure black) */
+    --text-secondary: #5C6767;
+    /* Graphite */
+    --text-tertiary: #9AA0A6;
+    /* Stone */
+
+    /* Brand: Eucalyptus & Coral */
+    --primary: #4A7A75;
+    /* Smooth Eucalyptus Green */
+    --primary-hover: #38615D;
+    /* Deep Forest */
+    --primary-light: #E0F2F1;
+    /* Mint Water */
+
+    /* Accents (The "Wow" pops) */
+    --accent: #FF8BA7;
+    /* Soft Coral */
+    --accent-hover: #FF6B8B;
+
+    /* States */
+    --danger: #E07A5F;
+    /* Terracotta (softer red) */
+    --danger-bg: #FDF2F0;
+
+    /* The "Playful" Radii */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 32px;
+    /* Super rounded */
+
+    /* Shadows: Diffuse & Floating */
+    --shadow-subtle: 0 2px 8px -2px rgba(44, 51, 51, 0.04);
+    --shadow-card: 0 8px 24px -6px rgba(44, 51, 51, 0.08);
+    --shadow-premium: 0 20px 48px -12px rgba(44, 51, 51, 0.12);
+    --shadow-pop: 0 12px 32px -8px rgba(74, 122, 117, 0.25);
+    /* Colored shadow for primary */
+
+    /* Typography */
+    --font-serif: 'Merriweather', serif;
+    --font-sans: 'Nunito', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
