@@ -1,91 +1,118 @@
-# ANTIGRAVITY PROJECT CONSTITUTION (v3.0)
-**Status:** Mandatory
-**Context:** Production-Grade Engineering (Local & Node Backend)
+# Project Rules & Standards
+**Version:** 3.1  
+**Purpose:** Specific thresholds, checklists, and templates for this project.
 
-## 0. THE PRIME DIRECTIVE: INTENT & OUTCOME
-You are a Principal Software Engineer. You do not just "write code"; you architect solutions.
-1.  **Intent First:** Do not write a single line of code until you have read and confirmed the **Intent Document** (PRD). If the intent is ambiguous, ask clarifying questions.
-2.  **Outcome Over Output:** Your goal is a working, verifiable feature, not just text generation.
-3.  **Compliance:** Every significant task must conclude with a **Compliance Report** (see Section 6).
+> **Note:** For foundational engineering principles, see `.agent/rules/best-practice-guidelines.md`
 
 ---
 
-## 1. ARCHITECTURE & FILE STRUCTURE
-**Principle:** Structure precedes content. Adhere to a strict separation of concerns.
+## 1. Directory Layout
 
-### 1.1 Directory Layout
-* **Root:** Configuration files (`.eslintrc`, `package.json`, `README.md`) and documentation only.
-* **`src/`:** All source code.
-    * `src/components/`: UI components (Grouped by feature: `Button/index.js` + `style.css`).
-    * `src/modules/` or `src/lib/`: Pure business logic and state management (No UI code).
-    * `src/services/`: External API calls and Data Access Layer (DAL).
-    * `src/styles/`: Global tokens (`variables.css`), reset, and typography.
-* **`dist/`:** Compiled production output.
-* **`.agent/workflows/`:** Automated workflow definitions (e.g., `generate-unit-tests.md`).
-
-### 1.2 Modularity (Single Source of Truth)
-* **DRY Rule:** Logic must exist in exactly one place. If you copy-paste logic, you have failed. Abstract it into a `src/lib/` utility.
-* **Dependency Flow:** UI depends on Modules/Services. Modules/Services **never** depend on UI.
+| Folder | Purpose |
+|--------|---------|
+| **Root** | Config files only (`.eslintrc`, `package.json`, `README.md`) |
+| `src/core/` | Business logic services (no UI dependencies) |
+| `src/repo/` | Storage implementations (IndexedDB, Vault) |
+| `src/ui/` | UI components and renderers |
+| `src/utils/` | Shared utility functions |
+| `src/styles/` | CSS with `variables.css` for tokens |
+| `src/data/` | Data transformation (mappers) |
+| `tests/` | Jest test files |
+| `tests/mocks/` | Mock implementations for browser APIs |
+| `docs/` | Documentation |
 
 ---
 
-## 2. TECH STACK STANDARDS (STRICT)
+## 2. Tech Stack Standards
 
-### 2.1 HTML & Accessibility
-* **Semantic Only:** Use `<header>`, `<main>`, `<article>`, `<button>`. No "Div Soup".
-* **Keyboard Navigable:** All interactive elements must be usable via Keyboard (Tab index, Enter/Space to activate).
-    * **Focus States:** Never remove default focus outlines (`outline: none`) without replacing them with a visible alternative.
-* **Decoupled Hooks:** NEVER use CSS classes for JS selection (Use `[data-js]`).
-* **ARIA:** Use `aria-label` only if text is not visible. Prefer visible labels.
+### HTML
+- Use semantic elements: `<header>`, `<main>`, `<article>`, `<button>`
+- Use `[data-js]` attributes for JS selection (not CSS classes)
+- All interactive elements must be keyboard navigable
 
-### 2.2 CSS Architecture
-* **BEM Naming:** Enforce `Block__Element--Modifier` syntax (e.g., `.card__title`, `.card--featured`).
-* **No Magic Numbers:** Use CSS Variables for ALL colours and spacing.
-    * Define in `src/styles/variables.css`.
-    * Usage: `padding: var(--spacing-md);` (Not `16px`).
-* **Mobile-First:** Default styles are for mobile. Use `min-width` media queries for desktop.
+### CSS
+- **BEM naming:** `.block__element--modifier`
+- **No magic numbers:** Use CSS variables from `variables.css`
+- Example: `padding: var(--spacing-md);` not `padding: 16px;`
 
-### 2.3 JavaScript (ES6+ & Node)
-* **Safety:** `const` by default. `let` only if strictly necessary. **No `var`**.
-* **Async/Await:** Always use `async/await` over `.then()`. **Must** be wrapped in `try/catch` with explicit error logging.
-* **No Global Scope:** No variables attached to `window` or global object. Use ES Modules (`import`/`export`) exclusively.
-* **Equality:** Always use strict equality (`===`).
-
-### 2.4 SQL & Backend (If Applicable)
-* **Security:** Parameterised queries ONLY. No string concatenation for SQL.
-* **Secrets:** Never commit secrets. Use `process.env`.
-* **Migrations:** Schema changes must be versioned via migration scripts.
+### JavaScript
+- `const` by default, `let` only when necessary, **never `var`**
+- Use `async/await` with `try/catch` (not `.then()`)
+- Use ES Modules exclusively (`import`/`export`)
+- Use strict equality (`===`)
 
 ---
 
-## 3. WORKFLOW & QUALITY GATES
+## 3. Testing Requirements
 
-### 3.1 The "Plan-Act-Verify" Loop
-1.  **Plan:** Generate a "Plan Artifact" listing files to create/edit. Wait for approval if >3 files.
-2.  **Act:** Implement code in small, atomic steps.
-3.  **Verify:** You must **verify your own work**.
-    * **Terminal:** Run linter and tests after every edit.
-    * **Browser:** (If UI) Render and confirm visual output matches requirements.
+### Coverage Thresholds
 
-### 3.2 Testing Strategy (Mandatory)
-* **Zero Regressions:** Existing tests must pass before you are "Done".
-* **Test First:** Generate test stubs *before* complex logic.
-* **Coverage:**
-    * **Unit:** 100% coverage for business logic / utils.
-    * **Integration:** At least one end-to-end test for every new user flow (e.g., "User logs in and sees dashboard").
+| Layer | Minimum | Current |
+|-------|---------|---------|
+| `src/utils/` | 100% | ~12% |
+| `src/core/` | 90% | ~86% |
+| `src/repo/` | 80% | ~5% |
+| `src/ui/` | 70% | ~18% |
+| `app.js` | 60% | ~6% |
+
+### Required Tests
+
+**Unit Tests:**
+- All service methods (CRUD, validation)
+- All utility functions
+- All data transformations
+
+**Integration Tests:**
+- Create → Save → Reload → Verify
+- Import → Export → Re-import → Verify
+
+**Edge Cases (mandatory):**
+- Null/undefined inputs
+- Empty strings/arrays
+- Missing optional fields
+
+### Mocking
+
+Browser APIs must be mocked in `tests/mocks/`:
+```
+tests/mocks/
+├── IndexedDBMock.js
+├── FileSystemMock.js
+└── transformers.js
+```
+
+### Workflow
+- Run `npm test` before every commit
+- Run `npm test -- --coverage` before every PR
+- New `.js` files require corresponding `.test.js` files
+
 ---
 
-## 4. OBSERVABILITY & DOCUMENTATION
-* **Structured Logging:** All entry points must log context (e.g., `User ID`, `Action`).
-    * ❌ Bad: `console.log("Error", err)`
-    * ✅ Good: `console.error({ event: "FETCH_FAILED", endpoint: url, error: err.message })`
-* **Comments:** Explain **WHY**, not WHAT. [cite_start]"Why did we choose this pattern?"[cite: 1136].
-* **Docs:** Update `README.md` if you add new features or env variables.
+## 4. Workflow: Plan-Act-Verify
+
+1. **Plan:** List files to create/edit. Get approval if >3 files.
+2. **Act:** Implement in small, atomic steps.
+3. **Verify:** Run linter + tests. Check UI in browser if applicable.
 
 ---
 
-## 5. COMPLIANCE REPORT
-At the end of every significant task, you must generate this report:
+## 5. Logging Standards
+
+❌ Bad:
+```javascript
+console.log("Error", err)
+```
+
+✅ Good:
+```javascript
+console.error({ event: "FETCH_FAILED", endpoint: url, error: err.message })
+```
+
+---
+
+## 6. Compliance Report Template
+
+After every significant task, generate:
 
 ```yaml
 COMPLIANCE_REPORT:
@@ -96,8 +123,9 @@ COMPLIANCE_REPORT:
   Quality:
     - Tests Passed: [Yes/No]
     - Linting Passed: [Yes/No]
-    - Accessibility Check: [Yes/No]
+    - Coverage Delta: [+X% / -X%]
   Security:
     - Secrets Checked: [Yes/No]
     - Input Validation: [Yes/No]
-  Self_Correction: "I fixed [X] during verification."
+  Self_Correction: "Description of any fixes made during verification."
+```
