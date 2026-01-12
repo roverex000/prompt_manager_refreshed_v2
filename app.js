@@ -7,6 +7,7 @@ import * as CollectionService from './src/core/CollectionService.js';
 import * as SidebarRenderer from './src/ui/SidebarRenderer.js';
 import * as TemplatePickerUI from './src/ui/TemplatePickerUI.js';
 import { Toast } from './src/ui/Toast.js';
+import { Splitter } from './src/ui/Splitter.js';
 
 // Extracted Modules
 import { STORAGE_MODE, THEME, STORAGE_KEYS } from './src/config.js';
@@ -24,6 +25,7 @@ class App {
         this.store = new IndexedDBRepo();
         this.vault = new VaultRepo();
         this.semantic = new SemanticSearch();
+        this.splitter = new Splitter();
         this.state = {
             storageMode: localStorage.getItem(STORAGE_KEYS.MODE) || STORAGE_MODE.LOCAL,
             prompts: [],
@@ -72,6 +74,9 @@ class App {
             this.renderCollections();
             this.setupEventListeners();
             this.populateFilterDropdowns();
+
+            // --- Splitter: Restore saved pane sizes ---
+            this.splitter.loadSizes();
 
             // --- Semantic Init ---
             // Don't await this, let it load in background

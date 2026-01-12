@@ -16,226 +16,237 @@
 
 <body>
     <div class="app-container">
-        <aside class="sidebar">
-            <div class="sidebar-split-left">
-                <div class="sidebar-header">
-                    <h1>Prompt Manager</h1>
-                    <div class="sidebar-header-actions">
-                        <button id="btn-vault-toggle" class="icon-btn tiny" title="Toggle Vault Mode (File System)">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="7 10 12 15 17 10"></polyline>
-                                <line x1="12" y1="15" x2="12" y2="3"></line>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <button id="btn-vault-connect" class="primary small full-width mb-2 btn-vault-connect">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" style="margin-right:8px">
-                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                    Connect Folder
-                </button>
-
-                <div class="sidebar-actions-row">
-                    <button id="btn-manage-templates" class="btn-amber small-caps btn-compact flex-1">Templates</button>
-                    <button id="btn-import-export" class="btn-black small-caps btn-compact flex-1">Transfer</button>
-                    <button id="btn-theme-toggle" class="secondary btn-compact" title="Toggle Dark/Light Mode">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        <!-- Left Pane: Navigation/Controls (full height) -->
+        <aside class="pane-nav">
+            <div class="sidebar-header">
+                <h1>Prompt Manager</h1>
+                <div class="sidebar-header-actions">
+                    <button id="btn-vault-toggle" class="icon-btn tiny" title="Toggle Vault Mode (File System)">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <button id="btn-vault-connect" class="primary small full-width mb-2 btn-vault-connect">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" style="margin-right:8px">
+                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                Connect Folder
+            </button>
+
+            <div class="sidebar-actions-row">
+                <button id="btn-manage-templates" class="btn-amber small-caps btn-compact flex-1">Templates</button>
+                <button id="btn-import-export" class="btn-black small-caps btn-compact flex-1">Transfer</button>
+                <button id="btn-theme-toggle" class="secondary btn-compact" title="Toggle Dark/Light Mode">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="filters">
+                <div class="search-row">
+                    <input type="text" id="search-input" placeholder="Search prompts...">
+                    <button id="btn-save-search" class="icon-btn" title="Save Smart Collection">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2-2z"></path>
                         </svg>
                     </button>
                 </div>
 
-                <div class="filters">
-                    <div class="search-row">
-                        <input type="text" id="search-input" placeholder="Search prompts...">
-                        <button id="btn-save-search" class="icon-btn" title="Save Smart Collection">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2-2z"></path>
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div class="filter-row" style="margin-bottom: 0.5rem; justify-content: space-between;">
-                        <label
-                            style="font-size: 0.8rem; color: var(--text-secondary); display:flex; align-items:center; gap:6px;">
-                            <input type="checkbox" id="toggle-semantic-mode" checked>
-                            <span>AI Search</span>
-                        </label>
-                        <label
-                            style="font-size: 0.8rem; color: var(--text-secondary); display:flex; flex-direction:column; align-items:stretch; gap:4px; flex:1; margin-left:8px;">
-                            <div style="display:flex; justify-content:space-between;">
-                                <span>Sens:</span>
-                                <span id="semantic-val">0.25</span>
-                            </div>
-                            <input type="range" id="semantic-slider" min="0" max="1" step="0.05" value="0.25"
-                                style="width:100%;">
-                        </label>
-                    </div>
-
-                    <div class="filter-row">
-                        <select id="filter-sort">
-                            <option value="date-desc">Newest First</option>
-                            <option value="date-asc">Oldest First</option>
-                            <option value="name-asc">Name (A-Z)</option>
-                            <option value="cat-asc">Category (A-Z)</option>
-                            <option value="client-asc">Client (A-Z)</option>
-                        </select>
-                    </div>
-
-                    <div class="filter-row">
-                        <select id="filter-status">
-                            <option value="">Any Status</option>
-                        </select>
-                    </div>
-
-                    <div class="filter-row">
-                        <select id="filter-category">
-                            <option value="">All Categories</option>
-                        </select>
-                        <select id="filter-client">
-                            <option value="">All Clients</option>
-                        </select>
-                    </div>
+                <div class="filter-row" style="margin-bottom: 0.5rem; justify-content: space-between;">
+                    <label
+                        style="font-size: 0.8rem; color: var(--text-secondary); display:flex; align-items:center; gap:6px;">
+                        <input type="checkbox" id="toggle-semantic-mode" checked>
+                        <span>AI Search</span>
+                    </label>
+                    <label
+                        style="font-size: 0.8rem; color: var(--text-secondary); display:flex; flex-direction:column; align-items:stretch; gap:4px; flex:1; margin-left:8px;">
+                        <div style="display:flex; justify-content:space-between;">
+                            <span>Sens:</span>
+                            <span id="semantic-val">0.25</span>
+                        </div>
+                        <input type="range" id="semantic-slider" min="0" max="1" step="0.05" value="0.25"
+                            style="width:100%;">
+                    </label>
                 </div>
 
-                <div id="collection-list" class="collection-list"></div>
+                <div class="filter-row">
+                    <select id="filter-sort">
+                        <option value="date-desc">Newest First</option>
+                        <option value="date-asc">Oldest First</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="cat-asc">Category (A-Z)</option>
+                        <option value="client-asc">Client (A-Z)</option>
+                    </select>
+                </div>
+
+                <div class="filter-row">
+                    <select id="filter-status">
+                        <option value="">Any Status</option>
+                    </select>
+                </div>
+
+                <div class="filter-row">
+                    <select id="filter-category">
+                        <option value="">All Categories</option>
+                    </select>
+                    <select id="filter-client">
+                        <option value="">All Clients</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="sidebar-split-right">
+            <div id="collection-list" class="collection-list"></div>
+        </aside>
+
+        <!-- Horizontal Splitter (resizes left/right) -->
+        <div class="splitter splitter-h" data-splitter="horizontal"></div>
+
+        <!-- Right Section: List + Editor stacked vertically -->
+        <div class="pane-right">
+            <!-- Top-Right: Prompts List -->
+            <section class="pane-list">
                 <button id="btn-new-prompt" class="primary full-width big-btn"
                     style="margin-top: 0; margin-bottom: 10px;">+ New
                     Prompt</button>
 
                 <div id="prompt-list" class="prompt-list">
                 </div>
-            </div>
-        </aside>
+            </section>
 
-        <main class="main-content">
-            <div id="empty-state" class="empty-state">
-                <div class="empty-message">
-                    <h3>No Prompt Selected</h3>
-                    <p>Select an item from the sidebar to edit, or create a new prompt.</p>
+            <!-- Vertical Splitter (resizes top/bottom) -->
+            <div class="splitter splitter-v" data-splitter="vertical"></div>
+
+            <!-- Bottom-Right: Editor -->
+            <main class="pane-editor">
+                <div id="empty-state" class="empty-state">
+                    <div class="empty-message">
+                        <h3>No Prompt Selected</h3>
+                        <p>Select an item from the sidebar to edit, or create a new prompt.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div id="editor-container" class="editor-container hidden">
-                <div class="editor-header">
-                    <div class="header-top-row">
-                        <div class="breadcrumbs">
-                            <span id="dirty-indicator" class="dirty-indicator">Saved</span>
-                        </div>
-                        <div class="header-actions">
-                            <button id="btn-save-changes" class="primary small">Save Changes</button>
-                            <button id="btn-save-version" class="secondary small">Save New Version</button>
-                            <button id="btn-duplicate-prompt" class="secondary small"
-                                title="Duplicate this prompt">Duplicate</button>
-                            <button id="btn-delete-prompt" class="btn-danger-solid small"
-                                title="Delete Prompt">Delete</button>
-                            <div style="width: 1px; height: 24px; background: var(--border-subtle); margin: 0 4px;">
+                <div id="editor-container" class="editor-container hidden">
+                    <div class="editor-header">
+                        <div class="header-top-row">
+                            <div class="breadcrumbs">
+                                <span id="dirty-indicator" class="dirty-indicator">Saved</span>
                             </div>
-                            <button id="btn-export-single" class="btn-black small"
-                                title="Download this prompt as JSON">Export</button>
-                        </div>
-                    </div>
-
-                    <input type="text" id="edit-title" placeholder="Prompt Title" class="h1-input">
-
-                    <div class="meta-row">
-                        <div class="meta-field">
-                            <label>Category</label>
-                            <input type="text" id="edit-category" placeholder="e.g. Coding" list="category-list">
-                        </div>
-                        <div class="meta-field">
-                            <label>Client</label>
-                            <input type="text" id="edit-client" placeholder="e.g. Internal" list="client-list">
-                        </div>
-                        <div class="meta-field">
-                            <label>Status</label>
-                            <select id="edit-status">
-                                <option value="draft">Draft</option>
-                                <option value="testing">Testing</option>
-                                <option value="live">Live</option>
-                                <option value="archived">Archived</option>
-                            </select>
-                        </div>
-                    </div>
-                    <datalist id="category-list"></datalist>
-                    <datalist id="client-list"></datalist>
-                </div>
-
-                <div class="editor-body">
-                    <div class="field-group">
-                        <label>Description</label>
-                        <input type="text" id="edit-description"
-                            placeholder="A brief summary of what this prompt achieves">
-                    </div>
-
-                    <div class="field-group">
-                        <label>Tags</label>
-                        <input type="text" id="edit-tags" placeholder="tag1, tag2, tag3">
-                    </div>
-
-                    <div class="field-group prompt-text-group">
-                        <div class="label-row">
-                            <label>Prompt Content</label>
-                            <div style="display: flex; gap: 8px;">
-                                <button id="btn-copy-clipboard" class="primary tiny"
-                                    title="Copy raw text to clipboard">Copy</button>
-                                <button id="btn-run-prompt" class="primary tiny"
-                                    style="background-color: var(--primary-hover);" title="Fill variables and copy">Run
-                                    & Copy</button>
-                                <button id="btn-insert-template" class="btn-amber tiny">Insert Template</button>
+                            <div class="header-actions">
+                                <button id="btn-save-changes" class="primary small">Save Changes</button>
+                                <button id="btn-save-version" class="secondary small">Save New Version</button>
+                                <button id="btn-duplicate-prompt" class="secondary small"
+                                    title="Duplicate this prompt">Duplicate</button>
+                                <button id="btn-delete-prompt" class="btn-danger-solid small"
+                                    title="Delete Prompt">Delete</button>
+                                <div style="width: 1px; height: 24px; background: var(--border-subtle); margin: 0 4px;">
+                                </div>
+                                <button id="btn-export-single" class="btn-black small"
+                                    title="Download this prompt as JSON">Export</button>
                             </div>
                         </div>
-                        <textarea id="edit-prompt-text" class="code-font"
-                            placeholder="Write your prompt here..."></textarea>
+
+                        <input type="text" id="edit-title" placeholder="Prompt Title" class="h1-input">
+
+                        <div class="meta-row">
+                            <div class="meta-field">
+                                <label>Category</label>
+                                <input type="text" id="edit-category" placeholder="e.g. Coding" list="category-list">
+                            </div>
+                            <div class="meta-field">
+                                <label>Client</label>
+                                <input type="text" id="edit-client" placeholder="e.g. Internal" list="client-list">
+                            </div>
+                            <div class="meta-field">
+                                <label>Status</label>
+                                <select id="edit-status">
+                                    <option value="draft">Draft</option>
+                                    <option value="testing">Testing</option>
+                                    <option value="live">Live</option>
+                                    <option value="archived">Archived</option>
+                                </select>
+                            </div>
+                        </div>
+                        <datalist id="category-list"></datalist>
+                        <datalist id="client-list"></datalist>
                     </div>
 
-                    <div class="field-group">
-                        <label>Notes</label>
-                        <textarea id="edit-notes" class="short"
-                            placeholder="Internal notes, version comments, etc."></textarea>
+                    <div class="editor-body">
+                        <div class="field-group">
+                            <label>Description</label>
+                            <input type="text" id="edit-description"
+                                placeholder="A brief summary of what this prompt achieves">
+                        </div>
+
+                        <div class="field-group">
+                            <label>Tags</label>
+                            <input type="text" id="edit-tags" placeholder="tag1, tag2, tag3">
+                        </div>
+
+                        <div class="field-group prompt-text-group">
+                            <div class="label-row">
+                                <label>Prompt Content</label>
+                                <div style="display: flex; gap: 8px;">
+                                    <button id="btn-copy-clipboard" class="primary tiny"
+                                        title="Copy raw text to clipboard">Copy</button>
+                                    <button id="btn-run-prompt" class="primary tiny"
+                                        style="background-color: var(--primary-hover);"
+                                        title="Fill variables and copy">Run
+                                        & Copy</button>
+                                    <button id="btn-insert-template" class="btn-amber tiny">Insert Template</button>
+                                </div>
+                            </div>
+                            <textarea id="edit-prompt-text" class="code-font"
+                                placeholder="Write your prompt here..."></textarea>
+                        </div>
+
+                        <div class="field-group">
+                            <label>Notes</label>
+                            <textarea id="edit-notes" class="short"
+                                placeholder="Internal notes, version comments, etc."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Footer removed as buttons moved to header -->
+                    <div class="editor-footer" style="display:none;"></div>
+
+                    <div class="version-history-section">
+                        <h3>Version History</h3>
+                        <div class="table-wrapper">
+                            <table class="version-table">
+                                <thead>
+                                    <tr>
+                                        <th width="50">Ver</th>
+                                        <th width="120">Date</th>
+                                        <th>Notes</th>
+                                        <th width="140" align="right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="version-list-body">
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Footer removed as buttons moved to header -->
-                <div class="editor-footer" style="display:none;"></div>
-
-                <div class="version-history-section">
-                    <h3>Version History</h3>
-                    <div class="table-wrapper">
-                        <table class="version-table">
-                            <thead>
-                                <tr>
-                                    <th width="50">Ver</th>
-                                    <th width="120">Date</th>
-                                    <th>Notes</th>
-                                    <th width="140" align="right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="version-list-body">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
 
     <dialog id="modal-unsaved">

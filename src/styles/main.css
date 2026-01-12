@@ -9,6 +9,7 @@
 
 /* 3. Core Layout */
 @import 'modules/layout.css';
+@import 'modules/splitter.css';
 
 /* 4. Section Styles */
 @import 'modules/sidebar.css';

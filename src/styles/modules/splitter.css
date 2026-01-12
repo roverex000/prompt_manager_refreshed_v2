@@ -1,0 +1,65 @@
+/* Resizable Splitters */
+
+/* Splitter base styles */
+.splitter {
+    background: var(--border-subtle);
+    transition: background 0.2s ease;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.splitter:hover,
+.splitter.dragging {
+    background: var(--primary);
+}
+
+/* Horizontal splitter (resizes left pane width) */
+.splitter-h {
+    width: 6px;
+    cursor: col-resize;
+}
+
+/* Vertical splitter (resizes top/bottom in right pane) */
+.splitter-v {
+    height: 6px;
+    cursor: row-resize;
+}
+
+/* Visual grip indicator */
+.splitter::after {
+    content: '';
+    position: absolute;
+    background: var(--text-tertiary);
+    opacity: 0.4;
+    transition: opacity 0.2s ease;
+}
+
+.splitter:hover::after,
+.splitter.dragging::after {
+    opacity: 0.8;
+}
+
+.splitter-h::after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 40px;
+    border-radius: 1px;
+}
+
+.splitter-v::after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 2px;
+    border-radius: 1px;
+}
+
+/* Hide splitters on mobile */
+@media screen and (max-width: 768px) {
+    .splitter {
+        display: none;
+    }
+}
