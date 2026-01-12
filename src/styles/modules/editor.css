@@ -1,13 +1,15 @@
-/* --- EDITOR PANE CONTENT --- */
-/* Note: .pane-editor layout is defined in layout.css */
+/* --- EDITOR PANE - AI-Native Light Theme --- */
 
-/* Editor pane content styling */
+/* Editor pane background */
 .pane-editor {
     display: flex;
     flex-direction: column;
     background: var(--bg-body);
 }
 
+/* ===========================================
+   EMPTY STATE
+   =========================================== */
 .empty-state {
     display: flex;
     align-items: center;
@@ -17,20 +19,35 @@
     color: var(--text-tertiary);
 }
 
-.empty-message h3 {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    color: var(--text-secondary);
+.empty-message {
+    text-align: center;
+    max-width: 280px;
 }
 
-/* The Paper Sheet */
+.empty-message h3 {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+}
+
+.empty-message p {
+    color: var(--text-tertiary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* ===========================================
+   EDITOR CONTAINER - Main Card
+   =========================================== */
 .editor-container {
     background: var(--bg-surface);
     width: 100%;
     max-width: none;
     border-radius: 0;
     box-shadow: none;
-    padding: 3rem;
+    padding: var(--space-8);
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
@@ -38,184 +55,238 @@
     min-height: 100%;
     box-sizing: border-box;
     min-width: 0;
-    border: none;
-    transition: box-shadow 0.3s ease;
+    border-left: 1px solid var(--border-subtle);
 }
 
 .editor-container:focus-within {
-    box-shadow: var(--shadow-premium), 0 0 0 2px var(--primary-light);
+    box-shadow: inset 3px 0 0 var(--primary);
 }
 
 .hidden {
     display: none !important;
 }
 
-/* Editor Header */
+/* ===========================================
+   EDITOR HEADER
+   =========================================== */
 .editor-header {
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-6);
 }
 
 .header-top-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-4);
 }
 
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--space-2);
 }
 
+/* Saved/Unsaved Indicator */
 .dirty-indicator {
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.6875rem;
+    font-weight: 600;
     color: var(--text-tertiary);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    background: var(--bg-body);
-    padding: 4px 10px;
-    border-radius: 99px;
+    letter-spacing: 0.05em;
+    background: var(--bg-elevated);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
 }
 
+.dirty-indicator.unsaved {
+    background: var(--warning-bg);
+    color: var(--warning);
+    border-color: var(--warning);
+}
+
+/* Title Input */
 .h1-input {
-    font-family: var(--font-serif);
-    font-size: 2.25rem;
+    font-family: var(--font-sans);
+    font-size: 1.75rem;
     font-weight: 700;
     color: var(--text-primary);
     width: 100%;
     border: none;
     padding: 0;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-5);
     background: transparent;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.h1-input:focus {
+    outline: none;
 }
 
 .h1-input::placeholder {
-    color: var(--border-subtle);
+    color: var(--text-tertiary);
 }
 
-/* Meta Grid */
+/* ===========================================
+   META ROW - Category/Client/Status
+   =========================================== */
 .meta-row {
     display: grid;
     grid-template-columns: 1fr 1fr 140px;
-    gap: 2rem;
-    background: transparent;
-    padding: 1.5rem 0;
-    border-top: 1px solid var(--border-subtle);
-    border-bottom: 1px solid var(--border-subtle);
+    gap: var(--space-5);
+    background: var(--bg-elevated);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
 }
 
 .meta-field {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: var(--space-2);
 }
 
 .meta-field label {
-    font-size: 0.7rem;
-    font-weight: 700;
+    font-size: 0.6875rem;
+    font-weight: 600;
     text-transform: uppercase;
-    color: var(--text-secondary);
+    color: var(--text-tertiary);
     letter-spacing: 0.05em;
 }
 
 .meta-field input,
 .meta-field select,
 .bold-input {
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid var(--border-subtle);
-    padding: 8px 0;
-    font-size: 0.95rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.875rem;
     font-weight: 500;
-    transition: all 0.2s ease;
     color: var(--text-primary);
-    border-radius: 0;
+    transition: border-color var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.meta-field input:hover,
+.meta-field select:hover,
+.bold-input:hover {
+    border-color: var(--border-hover);
 }
 
 .meta-field input:focus,
 .meta-field select:focus,
 .bold-input:focus {
-    border-bottom-color: var(--primary);
-    box-shadow: 0 4px 6px -4px var(--primary-light);
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: var(--shadow-focus);
 }
 
-/* Editor Body */
+/* ===========================================
+   EDITOR BODY
+   =========================================== */
 .editor-body {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: var(--space-5);
+    margin-top: var(--space-5);
 }
 
 .field-group label {
     display: block;
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-weight: 500;
+    font-size: 0.8125rem;
     color: var(--text-primary);
-    margin-bottom: 0.75rem;
+    margin-bottom: var(--space-2);
 }
 
 .label-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.75rem;
+    margin-bottom: var(--space-2);
 }
 
-/* MONOSPACE FONT for Prompt Text */
+/* ===========================================
+   CODE TEXTAREA - AI Prompt Content
+   =========================================== */
 textarea.code-font {
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    min-height: 350px;
-    background: #fafafa;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.7;
+    min-height: 280px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    color: var(--text-primary);
+}
+
+textarea.code-font:focus {
+    background: var(--bg-surface);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-focus);
 }
 
 textarea.short {
-    min-height: 100px;
+    min-height: 80px;
 }
 
-/* Footer & History */
+/* ===========================================
+   FOOTER & VERSION HISTORY
+   =========================================== */
 .editor-footer {
-    margin-top: 3rem;
-    padding-top: 2rem;
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
     border-top: 1px solid var(--border-subtle);
     display: flex;
-    gap: 1rem;
+    gap: var(--space-3);
 }
 
 .version-history-section {
-    margin-top: 4rem;
-    margin-bottom: 1rem;
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
     width: 100%;
 }
 
 .version-history-section h3 {
-    font-family: var(--font-serif);
-    font-size: 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
 }
 
-/* Table Styles */
+.version-history-section h3::before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 16px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+/* ===========================================
+   VERSION TABLE
+   =========================================== */
 .table-wrapper {
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
     overflow-y: auto;
-    max-height: 400px;
+    max-height: 350px;
     background: var(--bg-surface);
     width: 100%;
     overflow-x: auto;
-    box-shadow: var(--shadow-subtle);
 }
 
 .version-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.9rem;
+    font-size: 0.8125rem;
     table-layout: fixed;
 }
 
@@ -233,11 +304,11 @@ textarea.short {
 
 .version-table th {
     text-align: left;
-    padding: 1rem;
-    background: #f8fafc;
-    color: var(--text-secondary);
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-elevated);
+    color: var(--text-tertiary);
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.6875rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border-bottom: 1px solid var(--border-subtle);
@@ -247,7 +318,7 @@ textarea.short {
 }
 
 .version-table td {
-    padding: 1rem;
+    padding: var(--space-3) var(--space-4);
     border-bottom: 1px solid var(--border-subtle);
     vertical-align: top;
     color: var(--text-secondary);
@@ -260,43 +331,48 @@ textarea.short {
     border-bottom: none;
 }
 
-/* Tablet Overrides */
+.version-table tr:hover td {
+    background: var(--bg-elevated);
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
 @media screen and (max-width: 1024px) {
     .editor-container {
-        padding: 1.5rem;
+        padding: var(--space-6);
     }
 
     .meta-row {
         grid-template-columns: 1fr 1fr;
-        gap: 1rem;
+        gap: var(--space-4);
     }
 
     .header-actions {
         flex-wrap: wrap;
-        gap: 8px;
+        gap: var(--space-2);
     }
 }
 
-/* Mobile Overrides */
 @media screen and (max-width: 768px) {
     .editor-container {
-        padding: 1rem;
+        padding: var(--space-4);
     }
 
     .h1-input {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+        font-size: 1.375rem;
+        margin-bottom: var(--space-4);
     }
 
     .meta-row {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
+        gap: var(--space-3);
     }
 
     .header-top-row {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.75rem;
+        gap: var(--space-3);
     }
 
     .header-actions {

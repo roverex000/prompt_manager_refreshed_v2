@@ -1,62 +1,90 @@
 @charset "UTF-8";
 
-/* --- THE DIGITAL ATELIER PALETTE --- */
+/* --- AI-NATIVE UI DESIGN SYSTEM --- */
+/* Inspired by ChatGPT, Claude, Cursor - Professional AI Tool Aesthetic */
+
 :root {
-    /* Backgrounds: Warm & tactile */
-    --bg-body: #F9F8F6;
-    /* "Warm Rice Paper" */
+    /* ===========================================
+       CORE PALETTE - AI Native
+       =========================================== */
+
+    /* Sidebar: Dark Charcoal Panel */
+    --sidebar-bg: #1E1E2E;
+    --sidebar-bg-hover: #2A2A3E;
+    --sidebar-text: #A1A1AA;
+    --sidebar-text-primary: #FAFAFA;
+    --sidebar-text-muted: #71717A;
+    --sidebar-border: #3F3F50;
+    --sidebar-accent: #6366F1;
+
+    /* Main Content: Clean & Light */
+    --bg-body: #F4F4F5;
     --bg-surface: #FFFFFF;
-    /* Pure white paper */
-    --bg-glass: rgba(253, 251, 247, 0.85);
-    /* Frosted warm glass */
+    --bg-elevated: #FAFAFA;
 
-    /* Ui Borders & Shadows */
-    --border-subtle: #E8E6E1;
-    /* Soft organic border */
-    --border-hover: #D1D5DB;
+    /* Borders - Subtle but defined */
+    --border-subtle: #E4E4E7;
+    --border-hover: #D4D4D8;
+    --border-focus: #A5B4FC;
 
-    /* Text: Soft Ink */
-    --text-primary: #2C3333;
-    /* Soft Charcoal (not pure black) */
-    --text-secondary: #5C6767;
-    /* Graphite */
-    --text-tertiary: #9AA0A6;
-    /* Stone */
+    /* Text Hierarchy */
+    --text-primary: #18181B;
+    --text-secondary: #52525B;
+    --text-tertiary: #A1A1AA;
 
-    /* Brand: Eucalyptus & Coral */
-    --primary: #4A7A75;
-    /* Smooth Eucalyptus Green */
-    --primary-hover: #38615D;
-    /* Deep Forest */
-    --primary-light: #E0F2F1;
-    /* Mint Water */
+    /* Primary Accent: Indigo (AI signature) */
+    --primary: #6366F1;
+    --primary-hover: #4F46E5;
+    --primary-light: #EEF2FF;
+    --primary-glow: rgba(99, 102, 241, 0.15);
 
-    /* Accents (The "Wow" pops) */
-    --accent: #FF8BA7;
-    /* Soft Coral */
-    --accent-hover: #FF6B8B;
+    /* Secondary Accent: Violet */
+    --secondary: #8B5CF6;
+    --secondary-hover: #7C3AED;
+    --secondary-light: #F5F3FF;
 
     /* States */
-    --danger: #E07A5F;
-    /* Terracotta (softer red) */
-    --danger-bg: #FDF2F0;
+    --success: #10B981;
+    --success-bg: #ECFDF5;
+    --danger: #EF4444;
+    --danger-bg: #FEF2F2;
+    --warning: #F59E0B;
+    --warning-bg: #FFFBEB;
 
-    /* The "Playful" Radii */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --radius-xl: 32px;
-    /* Super rounded */
+    /* Border Radii - Smooth & Modern */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 9999px;
 
-    /* Shadows: Diffuse & Floating */
-    --shadow-subtle: 0 2px 8px -2px rgba(44, 51, 51, 0.04);
-    --shadow-card: 0 8px 24px -6px rgba(44, 51, 51, 0.08);
-    --shadow-premium: 0 20px 48px -12px rgba(44, 51, 51, 0.12);
-    --shadow-pop: 0 12px 32px -8px rgba(74, 122, 117, 0.25);
-    /* Colored shadow for primary */
+    /* Shadows - Subtle Elevation */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.15);
+    --shadow-focus: 0 0 0 3px rgba(99, 102, 241, 0.2);
 
     /* Typography */
-    --font-serif: 'Merriweather', serif;
-    --font-sans: 'Nunito', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+    /* Spacing */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 200ms ease;
+    --transition-slow: 300ms ease;
+
+    /* Pane Sizing */
+    --pane-nav-width: 280px;
+    --pane-list-height: 40%;
 }

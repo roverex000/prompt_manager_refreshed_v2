@@ -1,9 +1,8 @@
-/* Resizable Splitters */
+/* Resizable Splitters - AI-Native Style */
 
-/* Splitter base styles */
 .splitter {
     background: var(--border-subtle);
-    transition: background 0.2s ease;
+    transition: background-color var(--transition-fast);
     flex-shrink: 0;
     position: relative;
 }
@@ -13,30 +12,30 @@
     background: var(--primary);
 }
 
-/* Horizontal splitter (resizes left pane width) */
+/* Horizontal splitter (left/right) */
 .splitter-h {
-    width: 6px;
+    width: 4px;
     cursor: col-resize;
 }
 
-/* Vertical splitter (resizes top/bottom in right pane) */
+/* Vertical splitter (top/bottom) */
 .splitter-v {
-    height: 6px;
+    height: 4px;
     cursor: row-resize;
 }
 
-/* Visual grip indicator */
+/* Grip indicator */
 .splitter::after {
     content: '';
     position: absolute;
     background: var(--text-tertiary);
-    opacity: 0.4;
-    transition: opacity 0.2s ease;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
 }
 
 .splitter:hover::after,
 .splitter.dragging::after {
-    opacity: 0.8;
+    opacity: 0.5;
 }
 
 .splitter-h::after {
@@ -44,7 +43,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 2px;
-    height: 40px;
+    height: 24px;
     border-radius: 1px;
 }
 
@@ -52,12 +51,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40px;
+    width: 24px;
     height: 2px;
     border-radius: 1px;
 }
 
-/* Hide splitters on mobile */
+/* Hide on mobile */
 @media screen and (max-width: 768px) {
     .splitter {
         display: none;
