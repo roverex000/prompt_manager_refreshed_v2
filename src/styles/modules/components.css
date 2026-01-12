@@ -1,81 +1,78 @@
-/* --- AI-NATIVE COMPONENT STYLES --- */
-
-/* ===========================================
-   BASE BUTTON
-   =========================================== */
 button {
     font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-md);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* Bouncy! */
+    border-radius: var(--radius-lg);
+    padding: 0.6rem 1.2rem;
     border: 1px solid transparent;
+    font-weight: 600;
+    font-size: 0.9rem;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    transition: all var(--transition-fast);
+    gap: 8px;
 }
 
-button:focus-visible {
-    outline: none;
-    box-shadow: var(--shadow-focus);
+/* Button variants */
+.btn-compact {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+    height: 32px;
 }
 
-/* ===========================================
-   PRIMARY BUTTON - Indigo Accent
-   =========================================== */
+.btn-vault-connect {
+    display: none;
+    background: #ea580c;
+}
+
+.btn-vault-connect.connected {
+    background: #16a34a;
+}
+
+.active-vault {
+    color: var(--primary);
+    background: var(--primary-light);
+}
+
+.vault-on {
+    color: #16a34a !important;
+    background: #dcfce7 !important;
+    border-color: #16a34a !important;
+}
+
+.vault-off {
+    color: #ea580c !important;
+    background: #ffedd5 !important;
+    border-color: #ea580c !important;
+}
+
 button.primary {
     background: var(--primary);
     color: white;
-    border-color: var(--primary);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-subtle);
 }
 
 button.primary:hover {
     background: var(--primary-hover);
-    border-color: var(--primary-hover);
-    box-shadow: var(--shadow-md), var(--shadow-glow);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 15px 30px -5px rgba(74, 122, 117, 0.4);
 }
 
-button.primary:active {
-    transform: translateY(1px);
-}
-
-/* ===========================================
-   SECONDARY BUTTON
-   =========================================== */
 button.secondary {
     background: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     color: var(--text-secondary);
+    box-shadow: var(--shadow-subtle);
 }
 
 button.secondary:hover {
-    background: var(--bg-elevated);
-    border-color: var(--border-hover);
+    border-color: var(--text-secondary);
+    background: #f8fafc;
     color: var(--text-primary);
+    transform: translateY(-2px);
 }
 
-/* ===========================================
-   GHOST BUTTON
-   =========================================== */
-button.ghost {
-    background: transparent;
-    border: none;
-    color: var(--text-secondary);
-}
-
-button.ghost:hover {
-    background: var(--bg-elevated);
-    color: var(--text-primary);
-}
-
-/* ===========================================
-   DANGER BUTTONS
-   =========================================== */
 button.danger {
     background: var(--danger-bg);
     color: var(--danger);
@@ -83,19 +80,48 @@ button.danger {
 }
 
 button.danger:hover {
-    background: #FEE2E2;
-    color: #B91C1C;
+    background: #fee2e2;
+    color: #991b1b;
 }
 
 button.danger-text {
     background: transparent;
     color: var(--danger);
     font-weight: 500;
-    border: none;
 }
 
 button.danger-text:hover {
     background: var(--danger-bg);
+}
+
+button.small {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+button.tiny {
+    padding: 2px 10px;
+    font-size: 0.75rem;
+    height: 26px;
+    border-radius: 99px;
+}
+
+button.icon-btn {
+    padding: 0.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    box-shadow: none;
+}
+
+button.icon-btn:hover {
+    color: var(--primary);
+    background: var(--primary-light);
+}
+
+.big-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
 }
 
 .btn-danger-solid {
@@ -105,223 +131,94 @@ button.danger-text:hover {
 }
 
 .btn-danger-solid:hover {
-    background: #DC2626;
-    border-color: #DC2626;
-}
-
-/* ===========================================
-   BUTTON SIZES
-   =========================================== */
-button.small {
-    padding: 0.375rem 0.75rem;
-    font-size: 0.8125rem;
-}
-
-button.tiny {
-    padding: 0.25rem 0.625rem;
-    font-size: 0.75rem;
-    border-radius: var(--radius-full);
-}
-
-button.big-btn {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9375rem;
-    font-weight: 600;
-}
-
-.btn-compact {
-    padding: 0.375rem 0.75rem;
-    font-size: 0.75rem;
-    height: 32px;
-}
-
-.full-width {
-    width: 100%;
-}
-
-/* ===========================================
-   ICON BUTTON
-   =========================================== */
-button.icon-btn {
-    padding: 0.5rem;
-    background: transparent;
-    border: none;
-    color: var(--text-tertiary);
-    border-radius: var(--radius-md);
-}
-
-button.icon-btn:hover {
-    color: var(--primary);
-    background: var(--primary-light);
-}
-
-button.icon-btn.tiny {
-    padding: 0.25rem;
-}
-
-/* ===========================================
-   VAULT BUTTONS
-   =========================================== */
-.btn-vault-connect {
-    display: none;
-}
-
-.btn-vault-connect.connected {
-    background: var(--success);
-    border-color: var(--success);
+    background: #b91c1c;
     color: white;
+    border-color: #b91c1c;
+    transform: translateY(-2px);
 }
 
-.active-vault {
-    color: var(--primary);
-    background: var(--primary-light);
-}
-
-.vault-on {
-    color: var(--success) !important;
-    background: var(--success-bg) !important;
-    border-color: var(--success) !important;
-}
-
-.vault-off {
-    color: var(--warning) !important;
-    background: var(--warning-bg) !important;
-    border-color: var(--warning) !important;
-}
-
-/* Legacy button mappings */
-.btn-amber,
 .btn-black {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    color: var(--text-secondary);
+    background: #0f172a;
+    color: white;
+    border: 1px solid #0f172a;
 }
 
-.btn-amber:hover,
 .btn-black:hover {
-    background: var(--bg-elevated);
-    border-color: var(--border-hover);
-    color: var(--text-primary);
+    background: #334155;
+    border-color: #334155;
+    color: white;
+    transform: translateY(-2px);
 }
 
-/* ===========================================
-   FORM ELEMENTS
-   =========================================== */
+.btn-amber {
+    background: #f59e0b;
+    color: white;
+    border: 1px solid #f59e0b;
+}
+
+.btn-amber:hover {
+    background: #d97706;
+    border-color: #d97706;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Inputs */
 input[type="text"],
 textarea,
 select,
 .search-bar {
     width: 100%;
-    padding: 0.625rem 0.875rem;
+    padding: 0.75rem 1rem;
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
     font-family: var(--font-sans);
-    font-size: 0.875rem;
+    font-size: 0.95rem;
     color: var(--text-primary);
     background: var(--bg-surface);
-    transition: border-color var(--transition-fast),
-        box-shadow var(--transition-fast);
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-subtle);
 }
 
-input[type="text"]:hover,
-textarea:hover,
-select:hover {
-    border-color: var(--border-hover);
-}
-
-input[type="text"]:focus,
+input:focus,
 textarea:focus,
 select:focus {
-    outline: none;
     border-color: var(--primary);
-    box-shadow: var(--shadow-focus);
+    box-shadow: 0 0 0 3px var(--primary-light);
 }
 
-input[type="text"]::placeholder,
-textarea::placeholder {
-    color: var(--text-tertiary);
-}
-
-/* Custom Range Slider */
-input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 4px;
-    background: var(--border-subtle);
-    border-radius: 2px;
-    cursor: pointer;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    background: var(--primary);
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid white;
-    box-shadow: var(--shadow-sm);
-    transition: transform var(--transition-fast);
-}
-
-input[type="range"]::-webkit-slider-thumb:hover {
-    transform: scale(1.15);
-}
-
-input[type="range"]::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    background: var(--primary);
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid white;
-    box-shadow: var(--shadow-sm);
-}
-
-input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    accent-color: var(--primary);
-    cursor: pointer;
-}
-
-/* ===========================================
-   TAGS & BADGES - AI Tool Style
-   =========================================== */
+/* Tags & Badges */
 .tag-pill {
-    display: inline-block;
-    background: var(--primary-light);
-    border: 1px solid var(--border-focus);
-    padding: 2px 10px;
-    border-radius: var(--radius-full);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    color: var(--primary);
-    letter-spacing: 0.01em;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    padding: 3px 8px;
+    border-radius: 99px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
 }
 
 .tag-pill:nth-child(3n+1) {
-    background: #ECFDF5;
-    color: #059669;
-    border-color: #A7F3D0;
+    background: #ecfdf5;
+    color: #047857;
+    border-color: #a7f3d0;
 }
 
 .tag-pill:nth-child(3n+2) {
-    background: var(--primary-light);
-    color: var(--primary);
-    border-color: #C7D2FE;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-color: #bfdbfe;
 }
 
 .tag-pill:nth-child(3n+3) {
-    background: var(--secondary-light);
-    color: var(--secondary);
-    border-color: #DDD6FE;
+    background: #fdf4ff;
+    color: #a21caf;
+    border-color: #f0abfc;
 }
 
 .meta-label {
-    font-size: 0.6875rem;
+    font-size: 0.7rem;
     color: var(--text-tertiary);
     font-weight: 600;
     text-transform: uppercase;
@@ -332,21 +229,18 @@ input[type="checkbox"] {
 .small-caps {
     font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
-    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-weight: 700;
 }
 
-/* ===========================================
-   UTILITY CLASSES
-   =========================================== */
+.full-width {
+    width: 100%;
+}
+
 .mb-2 {
-    margin-bottom: var(--space-4);
+    margin-bottom: 1rem;
 }
 
 .flex-1 {
     flex: 1;
-}
-
-.hidden {
-    display: none !important;
 }

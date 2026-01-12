@@ -1,15 +1,13 @@
-/* --- EDITOR PANE - AI-Native Light Theme --- */
+/* --- EDITOR PANE CONTENT --- */
+/* Note: .pane-editor layout is defined in layout.css */
 
-/* Editor pane background */
+/* Editor pane content styling */
 .pane-editor {
     display: flex;
     flex-direction: column;
     background: var(--bg-body);
 }
 
-/* ===========================================
-   EMPTY STATE
-   =========================================== */
 .empty-state {
     display: flex;
     align-items: center;
@@ -19,35 +17,20 @@
     color: var(--text-tertiary);
 }
 
-.empty-message {
-    text-align: center;
-    max-width: 280px;
-}
-
 .empty-message h3 {
-    font-family: var(--font-sans);
-    font-size: 1.125rem;
-    font-weight: 600;
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
     color: var(--text-secondary);
-    margin-bottom: var(--space-2);
 }
 
-.empty-message p {
-    color: var(--text-tertiary);
-    font-size: 0.875rem;
-    line-height: 1.5;
-}
-
-/* ===========================================
-   EDITOR CONTAINER - Main Card
-   =========================================== */
+/* The Paper Sheet */
 .editor-container {
     background: var(--bg-surface);
     width: 100%;
     max-width: none;
     border-radius: 0;
     box-shadow: none;
-    padding: var(--space-8);
+    padding: 3rem;
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
@@ -55,238 +38,184 @@
     min-height: 100%;
     box-sizing: border-box;
     min-width: 0;
-    border-left: 1px solid var(--border-subtle);
+    border: none;
+    transition: box-shadow 0.3s ease;
 }
 
 .editor-container:focus-within {
-    box-shadow: inset 3px 0 0 var(--primary);
+    box-shadow: var(--shadow-premium), 0 0 0 2px var(--primary-light);
 }
 
 .hidden {
     display: none !important;
 }
 
-/* ===========================================
-   EDITOR HEADER
-   =========================================== */
+/* Editor Header */
 .editor-header {
-    margin-bottom: var(--space-6);
+    margin-bottom: 3rem;
 }
 
 .header-top-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--space-4);
+    margin-bottom: 1.5rem;
 }
 
 .header-actions {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 12px;
 }
 
-/* Saved/Unsaved Indicator */
 .dirty-indicator {
-    font-size: 0.6875rem;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-weight: 700;
     color: var(--text-tertiary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    background: var(--bg-elevated);
-    padding: 4px 12px;
-    border-radius: var(--radius-full);
-    border: 1px solid var(--border-subtle);
+    letter-spacing: 0.1em;
+    background: var(--bg-body);
+    padding: 4px 10px;
+    border-radius: 99px;
 }
 
-.dirty-indicator.unsaved {
-    background: var(--warning-bg);
-    color: var(--warning);
-    border-color: var(--warning);
-}
-
-/* Title Input */
 .h1-input {
-    font-family: var(--font-sans);
-    font-size: 1.75rem;
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
     font-weight: 700;
     color: var(--text-primary);
     width: 100%;
     border: none;
     padding: 0;
-    margin-bottom: var(--space-5);
+    margin-bottom: 2rem;
     background: transparent;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-}
-
-.h1-input:focus {
-    outline: none;
 }
 
 .h1-input::placeholder {
-    color: var(--text-tertiary);
+    color: var(--border-subtle);
 }
 
-/* ===========================================
-   META ROW - Category/Client/Status
-   =========================================== */
+/* Meta Grid */
 .meta-row {
     display: grid;
     grid-template-columns: 1fr 1fr 140px;
-    gap: var(--space-5);
-    background: var(--bg-elevated);
-    padding: var(--space-4);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-subtle);
+    gap: 2rem;
+    background: transparent;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .meta-field {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: 6px;
 }
 
 .meta-field label {
-    font-size: 0.6875rem;
-    font-weight: 600;
+    font-size: 0.7rem;
+    font-weight: 700;
     text-transform: uppercase;
-    color: var(--text-tertiary);
+    color: var(--text-secondary);
     letter-spacing: 0.05em;
 }
 
 .meta-field input,
 .meta-field select,
 .bold-input {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    padding: var(--space-2) var(--space-3);
-    font-size: 0.875rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--border-subtle);
+    padding: 8px 0;
+    font-size: 0.95rem;
     font-weight: 500;
+    transition: all 0.2s ease;
     color: var(--text-primary);
-    transition: border-color var(--transition-fast),
-        box-shadow var(--transition-fast);
-}
-
-.meta-field input:hover,
-.meta-field select:hover,
-.bold-input:hover {
-    border-color: var(--border-hover);
+    border-radius: 0;
 }
 
 .meta-field input:focus,
 .meta-field select:focus,
 .bold-input:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: var(--shadow-focus);
+    border-bottom-color: var(--primary);
+    box-shadow: 0 4px 6px -4px var(--primary-light);
 }
 
-/* ===========================================
-   EDITOR BODY
-   =========================================== */
+/* Editor Body */
 .editor-body {
     display: flex;
     flex-direction: column;
-    gap: var(--space-5);
-    margin-top: var(--space-5);
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
 .field-group label {
     display: block;
-    font-weight: 500;
-    font-size: 0.8125rem;
+    font-weight: 600;
+    font-size: 0.9rem;
     color: var(--text-primary);
-    margin-bottom: var(--space-2);
+    margin-bottom: 0.75rem;
 }
 
 .label-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--space-2);
+    margin-bottom: 0.75rem;
 }
 
-/* ===========================================
-   CODE TEXTAREA - AI Prompt Content
-   =========================================== */
+/* MONOSPACE FONT for Prompt Text */
 textarea.code-font {
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    line-height: 1.7;
-    min-height: 280px;
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-subtle);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    min-height: 350px;
+    background: #fafafa;
     border-radius: var(--radius-lg);
-    padding: var(--space-4);
-    color: var(--text-primary);
-}
-
-textarea.code-font:focus {
-    background: var(--bg-surface);
-    border-color: var(--primary);
-    box-shadow: var(--shadow-focus);
 }
 
 textarea.short {
-    min-height: 80px;
+    min-height: 100px;
 }
 
-/* ===========================================
-   FOOTER & VERSION HISTORY
-   =========================================== */
+/* Footer & History */
 .editor-footer {
-    margin-top: var(--space-6);
-    padding-top: var(--space-5);
+    margin-top: 3rem;
+    padding-top: 2rem;
     border-top: 1px solid var(--border-subtle);
     display: flex;
-    gap: var(--space-3);
+    gap: 1rem;
 }
 
 .version-history-section {
-    margin-top: var(--space-10);
-    margin-bottom: var(--space-4);
+    margin-top: 4rem;
+    margin-bottom: 1rem;
     width: 100%;
 }
 
 .version-history-section h3 {
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 600;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
     color: var(--text-primary);
-    margin-bottom: var(--space-4);
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
+    margin-bottom: 1.5rem;
 }
 
-.version-history-section h3::before {
-    content: '';
-    display: block;
-    width: 3px;
-    height: 16px;
-    background: var(--primary);
-    border-radius: 2px;
-}
-
-/* ===========================================
-   VERSION TABLE
-   =========================================== */
+/* Table Styles */
 .table-wrapper {
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
     overflow-y: auto;
-    max-height: 350px;
+    max-height: 400px;
     background: var(--bg-surface);
     width: 100%;
     overflow-x: auto;
+    box-shadow: var(--shadow-subtle);
 }
 
 .version-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.8125rem;
+    font-size: 0.9rem;
     table-layout: fixed;
 }
 
@@ -304,11 +233,11 @@ textarea.short {
 
 .version-table th {
     text-align: left;
-    padding: var(--space-3) var(--space-4);
-    background: var(--bg-elevated);
-    color: var(--text-tertiary);
+    padding: 1rem;
+    background: #f8fafc;
+    color: var(--text-secondary);
     font-weight: 600;
-    font-size: 0.6875rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border-bottom: 1px solid var(--border-subtle);
@@ -318,7 +247,7 @@ textarea.short {
 }
 
 .version-table td {
-    padding: var(--space-3) var(--space-4);
+    padding: 1rem;
     border-bottom: 1px solid var(--border-subtle);
     vertical-align: top;
     color: var(--text-secondary);
@@ -331,48 +260,43 @@ textarea.short {
     border-bottom: none;
 }
 
-.version-table tr:hover td {
-    background: var(--bg-elevated);
-}
-
-/* ===========================================
-   RESPONSIVE
-   =========================================== */
+/* Tablet Overrides */
 @media screen and (max-width: 1024px) {
     .editor-container {
-        padding: var(--space-6);
+        padding: 1.5rem;
     }
 
     .meta-row {
         grid-template-columns: 1fr 1fr;
-        gap: var(--space-4);
+        gap: 1rem;
     }
 
     .header-actions {
         flex-wrap: wrap;
-        gap: var(--space-2);
+        gap: 8px;
     }
 }
 
+/* Mobile Overrides */
 @media screen and (max-width: 768px) {
     .editor-container {
-        padding: var(--space-4);
+        padding: 1rem;
     }
 
     .h1-input {
-        font-size: 1.375rem;
-        margin-bottom: var(--space-4);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     .meta-row {
         grid-template-columns: 1fr;
-        gap: var(--space-3);
+        gap: 0.75rem;
     }
 
     .header-top-row {
         flex-direction: column;
         align-items: flex-start;
-        gap: var(--space-3);
+        gap: 0.75rem;
     }
 
     .header-actions {
